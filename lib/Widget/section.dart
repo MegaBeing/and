@@ -24,27 +24,33 @@ class _SectionState extends State<Section> {
     // TODO: implement build
     return Padding(
       padding: EdgeInsets.all(20),
-      child: Container(
-        height: 350,
-        width: 550,
-        decoration: BoxDecoration(
-          color: const Color(0xffa32a2a),
-          borderRadius: BorderRadius.circular(24.0),
+      child: InkWell(
+        onTap: () {},
+        customBorder: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24)
         ),
-        padding: const EdgeInsets.all(20),
-        child: Column(children: [
-          Center(
-            child: Text(
-              widget.title,
-              style: const TextStyle(
-                fontSize: 32,
+        child: Container(
+          height: 350,
+          width: 550,
+          decoration: BoxDecoration(
+            color: const Color(0x3ea32a2a),
+            borderRadius: BorderRadius.circular(24.0),
+          ),
+          padding: const EdgeInsets.all(20),
+          child: Column(children: [
+            Center(
+              child: Text(
+                widget.title,
+                style: const TextStyle(
+                  fontSize: 32,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 20),
-          Task(task: tasks[0]),
-          Task(task: tasks[0])
-        ]),
+            const SizedBox(height: 20),
+            Task(task: tasks[0]),
+            Task(task: tasks[0])
+          ]),
+        ),
       ),
     );
   }

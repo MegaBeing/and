@@ -11,13 +11,16 @@ class TaskModel {
     required this.id,
     required this.title,
     required this.description,
-    required this.dateTime,
+    required this.startDateTime,
+    required this.endDateTime,
     required this.priority,
   });
 
   final String id;
   final String title;
   final String description;
-  final DateTime dateTime;
+  final DateTime startDateTime;
+  final DateTime endDateTime;
   final Priority priority;
+
 }

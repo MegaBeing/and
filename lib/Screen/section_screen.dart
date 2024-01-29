@@ -1,15 +1,13 @@
+import 'package:and/Data/task_data.dart';
+import 'package:and/Data/task_data.dart';
+import 'package:and/Data/task_data.dart';
+import 'package:and/Data/task_data.dart';
 import 'package:and/Widget/section.dart';
 import 'package:flutter/material.dart';
 
 import '../Models/task.dart';
 
 class SectionScreen extends StatelessWidget {
-  final List<TaskModel> section_1 = [
-    TaskModel(id: '1', title: 'butter', description: 'bring butter', dateTime: DateTime.now(), priority: Priority.high)
-  ];
-  final List<TaskModel> section_2 = [];
-  final List<TaskModel> section_3 = [];
-  final List<TaskModel> section_4 = [];
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -22,18 +20,18 @@ class SectionScreen extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Section(taskList: section_1, title: 'section 1'),
+              Section(taskList: tasks, title: 'section 1'),
               const Spacer(),
-              Section(taskList: section_1, title: 'section 2'),
+              Section(taskList: tasks, title: 'section 2'),
             ],
           ),
           const Spacer(),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Section(taskList: section_1, title: 'section 3'),
+              Section(taskList: tasks, title: 'section 3'),
               const Spacer(),
-              Section(taskList: section_1, title: 'section 4'),
+              Section(taskList: tasks, title: 'section 4'),
             ],
           ),
         ],
