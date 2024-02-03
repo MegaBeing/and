@@ -14,28 +14,18 @@ class SectionScreen extends StatelessWidget {
     var a = MediaQuery.of(context).viewInsets.horizontal;
     var b = MediaQuery.of(context).viewInsets.vertical;
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Section(taskList: tasks, title: 'section 1'),
-              const Spacer(),
-              Section(taskList: tasks, title: 'section 2'),
-            ],
-          ),
-          const Spacer(),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Section(taskList: tasks, title: 'section 3'),
-              const Spacer(),
-              Section(taskList: tasks, title: 'section 4'),
-            ],
-          ),
-        ],
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisExtent: 410,
+        ),
+        itemBuilder: (ctx, index) => Section(
+          section: sections[index],
+          title: sections[index].title,
+        ),
+        itemCount: sections.length,
       ),
     );
   }
 }
+
