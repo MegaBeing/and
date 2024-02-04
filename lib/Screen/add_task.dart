@@ -33,10 +33,10 @@ class _AddTaskState extends State<AddTask> {
     }
   }
 
-  void _selectDatepicker() async {
+  void _selectDateRanger() async {
     final now = DateTime.now();
 
-    final firstDate = DateTime(now.year - 1, now.month, now.day);
+    final firstDate = now;
     final lastDate = DateTime(now.year + 1, now.month, now.day);
     final pickedDate = await showDateRangePicker(
       context: context,
@@ -128,14 +128,14 @@ class _AddTaskState extends State<AddTask> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 (_startDate == null)
-                    ? Icon(Icons.align_horizontal_left)
+                    ? const Icon(Icons.align_horizontal_left)
                     : DateOnTask(date: _startDate!),
                 ElevatedButton(
-                  onPressed: _selectDatepicker,
+                  onPressed: _selectDateRanger,
                   child: const Icon(Icons.calendar_month_rounded),
                 ),
                 (_endDate == null)
-                    ? Icon(Icons.align_horizontal_right)
+                    ? const Icon(Icons.align_horizontal_right)
                     : DateOnTask(date: _endDate!)
               ],
             ),
@@ -148,14 +148,14 @@ class _AddTaskState extends State<AddTask> {
                   onPressed: () {
                     _taskkey.currentState!.reset();
                   },
-                  child: Text('Reset'),
+                  child: const Text('Reset'),
                 ),
                 const SizedBox(
                   width: 10,
                 ),
                 ElevatedButton(
                   onPressed: _saveTask,
-                  child: Text('Save'),
+                  child: const Text('Save'),
                 ),
                 const SizedBox(
                   width: 5,

@@ -17,7 +17,7 @@ final List<TaskModel>tasks4 = [
 
 ];
 final List<SectionModel>sections = [
-  SectionModel(title: 'College', taskList: tasks1,color: Color(0xff39d76b)),
+  SectionModel(title: 'College', taskList: tasks1,color: Color(0x5439d76b)),
   SectionModel(title: 'Misc', taskList:tasks2,color: Color(0xffccd739)),
   SectionModel(title: 'Algorithm', taskList:tasks3,color: Color(0xffd75639)),
   SectionModel(title: 'Learning', taskList: tasks4,color: Color(0xff39aad7)),

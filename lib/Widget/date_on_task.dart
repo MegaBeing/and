@@ -4,7 +4,7 @@ class DateOnTask extends StatelessWidget {
   DateOnTask({super.key, required, required this.date});
 
   final DateTime date;
-  List<String> months = [
+  final List<String> months = [
     'January',
     'February',
     'March',
@@ -29,7 +29,7 @@ class DateOnTask extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.center,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.yellow,
             ),
@@ -42,7 +42,7 @@ class DateOnTask extends StatelessWidget {
           ),
           Text(
             months[date.month - 1],
-            style: TextStyle(color: Colors.yellow),
+            style: const TextStyle(color: Colors.yellow),
           ),
         ],
       ),

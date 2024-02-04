@@ -18,6 +18,6 @@ class TaskModel {
   final String title;
   final DateTime startDateTime;
   final DateTime endDateTime;
-  final Priority priority;
+  Priority priority;
 
 }

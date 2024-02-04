@@ -7,9 +7,10 @@ import 'package:flutter/material.dart';
 import '../Models/task.dart';
 
 class Task extends StatefulWidget {
-  Task({super.key, required this.task});
+  Task({super.key, required this.task, required this.completed});
 
   final TaskModel task;
+  final void Function(TaskModel task) completed;
 
   @override
   State<Task> createState() => _TaskState();
@@ -17,7 +18,18 @@ class Task extends StatefulWidget {
 
 class _TaskState extends State<Task> {
   double _timerWidthPercentage = 0;
-  late Duration _durationLeft;
+
+  void _changePriorityToHigh() {
+    if (widget.task.endDateTime.difference(widget.task.endDateTime).inDays <=
+        1) {
+      widget.task.priority = Priority.high;
+    } else if (widget.task.endDateTime
+            .difference(widget.task.endDateTime)
+            .inDays ==
+        0) {
+      widget.completed(widget.task);
+    }
+  }
 
   @override
   void initState() {
@@ -36,8 +48,7 @@ class _TaskState extends State<Task> {
             widget.task.endDateTime,
           ),
         );
-        _durationLeft = TimerConfig()
-            .differenceDuration(DateTime.now(), widget.task.endDateTime);
+        _changePriorityToHigh();
       });
     });
   }
@@ -45,53 +56,60 @@ class _TaskState extends State<Task> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Container(
-      padding: const EdgeInsets.all(5),
-      height: 90,
-      width: 500,
-      decoration: BoxDecoration(
-        boxShadow: const [
-          BoxShadow(blurRadius: 15, blurStyle: BlurStyle.outer),
-        ],
-        borderRadius: BorderRadius.circular(90),
-        color: Colors.black,
-      ),
-      alignment: Alignment.topLeft,
-      child: Stack(
-        children: [
-          Container(
-            height: 90,
-            margin: const EdgeInsets.all(0),
-            width: 500 * _timerWidthPercentage,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(90),
-              color: priorityColor[widget.task.priority],
+    return InkWell(
+      onTap: () {},
+      customBorder:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(90)),
+      child: Container(
+        padding: const EdgeInsets.all(5),
+        height: 90,
+        width: 500,
+        decoration: BoxDecoration(
+          boxShadow: const [
+            BoxShadow(blurRadius: 15, blurStyle: BlurStyle.outer),
+          ],
+          borderRadius: BorderRadius.circular(90),
+          color: Color(0x724B4242),
+        ),
+        alignment: Alignment.topLeft,
+        child: Stack(
+          children: [
+            Container(
+              height: 90,
+              margin: const EdgeInsets.all(0),
+              width: 500 * _timerWidthPercentage,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(90),
+                color: priorityColor[widget.task.priority],
+              ),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              DateOnTask(date: widget.task.startDateTime,),
-              Container(
-                margin: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Colors.pinkAccent,
-                  borderRadius: BorderRadius.circular(23)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                DateOnTask(
+                  date: widget.task.startDateTime,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 2, 10, 2),
-                  child: Text(
-                    widget.task.title,
-                    style: const TextStyle(color: Colors.white,
-                    fontSize: 24),
+                Container(
+                  margin: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                      color: Colors.pinkAccent,
+                      borderRadius: BorderRadius.circular(23)),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 2, 10, 2),
+                    child: Text(
+                      widget.task.title,
+                      style: const TextStyle(color: Colors.white, fontSize: 24),
+                    ),
                   ),
                 ),
-              ),
-              DateOnTask(date: widget.task.endDateTime,),
-            ],
-          )
-        ],
+                DateOnTask(
+                  date: widget.task.endDateTime,
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
