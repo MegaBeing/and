@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:and/Calculations/time_to_timer.dart';
 import 'package:and/Widget/date_on_task.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,9 @@ class _TaskState extends State<Task> {
             .difference(widget.task.endDateTime)
             .inDays ==
         0) {
-      widget.completed(widget.task);
+      setState(() {
+        widget.completed(widget.task);
+      });
     }
   }
 
@@ -56,59 +57,60 @@ class _TaskState extends State<Task> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return InkWell(
-      onTap: () {},
-      customBorder:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(90)),
-      child: Container(
-        padding: const EdgeInsets.all(5),
-        height: 90,
-        width: 500,
-        decoration: BoxDecoration(
-          boxShadow: const [
-            BoxShadow(blurRadius: 15, blurStyle: BlurStyle.outer),
-          ],
-          borderRadius: BorderRadius.circular(90),
-          color: Color(0x724B4242),
-        ),
-        alignment: Alignment.topLeft,
-        child: Stack(
-          children: [
-            Container(
-              height: 90,
-              margin: const EdgeInsets.all(0),
-              width: 500 * _timerWidthPercentage,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(90),
-                color: priorityColor[widget.task.priority],
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                DateOnTask(
-                  date: widget.task.startDateTime,
+    return Card(
+      clipBehavior: Clip.hardEdge,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: InkWell(
+        onTap: () {},
+        child: Container(
+          padding: const EdgeInsets.all(5),
+          height: 90,
+          width: 500,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Color(0x724B4242),
+          ),
+          child: Stack(
+            children: [
+              Container(
+                padding: EdgeInsets.all(5),
+                height: 90,
+                margin: const EdgeInsets.all(0),
+                width: 500 * _timerWidthPercentage,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: priorityColor[widget.task.priority],
                 ),
-                Container(
-                  margin: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                      color: Colors.pinkAccent,
-                      borderRadius: BorderRadius.circular(23)),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 2, 10, 2),
-                    child: Text(
-                      widget.task.title,
-                      style: const TextStyle(color: Colors.white, fontSize: 24),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  DateOnTask(
+                    date: widget.task.startDateTime,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                        color: Colors.pinkAccent,
+                        borderRadius: BorderRadius.circular(23)),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 2, 10, 2),
+                      child: Text(
+                        widget.task.title,
+                        style: const TextStyle(color: Colors.white, fontSize: 24),
+                      ),
                     ),
                   ),
-                ),
-                DateOnTask(
-                  date: widget.task.endDateTime,
-                ),
-              ],
-            )
-          ],
+                  DateOnTask(
+                    date: widget.task.endDateTime,
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
