@@ -2,7 +2,6 @@ import 'package:and/Models/section.dart';
 import 'package:and/Screen/add_task.dart';
 import 'package:and/Screen/section_expanded.dart';
 import 'package:and/Widget/task.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../Models/task.dart';
@@ -24,8 +23,10 @@ class _SectionState extends State<Section> {
   void _sectionOnTap() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (ctx) =>
-            SectionExpanded(section: widget.section, completed: _taskComplete),
+        builder: (ctx) => SectionExpanded(
+          section: widget.section,
+          completed: _taskComplete,
+        ),
       ),
     );
   }
@@ -56,7 +57,7 @@ class _SectionState extends State<Section> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Padding(
-      padding: EdgeInsets.all(27),
+      padding: const EdgeInsets.all(27),
       child: InkWell(
         onTap: _sectionOnTap,
         customBorder:
@@ -69,12 +70,12 @@ class _SectionState extends State<Section> {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 10),
+                      padding: const EdgeInsets.only(left: 10),
                       child: Text(
                         widget.title,
                         style: const TextStyle(

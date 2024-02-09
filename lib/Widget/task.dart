@@ -24,11 +24,8 @@ class _TaskState extends State<Task> {
       widget.task.priority = Priority.high;
     } else if (widget.task.endDateTime
             .difference(widget.task.endDateTime)
-            .inDays ==
-        0) {
-      setState(() {
-        widget.completed(widget.task);
-      });
+            .inDays <=0) {
+      widget.completed(widget.task);
     }
   }
 
@@ -100,7 +97,8 @@ class _TaskState extends State<Task> {
                       padding: const EdgeInsets.fromLTRB(10, 2, 10, 2),
                       child: Text(
                         widget.task.title,
-                        style: const TextStyle(color: Colors.white, fontSize: 24),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 24),
                       ),
                     ),
                   ),

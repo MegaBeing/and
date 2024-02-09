@@ -1,13 +1,9 @@
 import 'package:and/Data/task_data.dart';
-import 'package:and/Data/task_data.dart';
-import 'package:and/Data/task_data.dart';
-import 'package:and/Data/task_data.dart';
 import 'package:and/Widget/section.dart';
 import 'package:flutter/material.dart';
 
-import '../Models/task.dart';
-
 class SectionScreen extends StatelessWidget {
+  const SectionScreen({super.key});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
