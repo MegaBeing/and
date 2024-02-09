@@ -1,13 +1,14 @@
 import 'dart:async';
 import 'package:and/Calculations/time_to_timer.dart';
-import 'package:and/Widget/date_on_task.dart';
+import 'package:and/Models/section.dart';
+import 'package:and/Widget/Task_Widgets/date_on_task.dart';
 import 'package:flutter/material.dart';
 
-import '../Models/task.dart';
+import '../../Models/task.dart';
 
 class Task extends StatefulWidget {
-  Task({super.key, required this.task, required this.completed});
-
+  Task({super.key,required this.section, required this.task, required this.completed});
+  final SectionModel section;
   final TaskModel task;
   final void Function(TaskModel task) completed;
 
@@ -19,11 +20,25 @@ class _TaskState extends State<Task> {
   double _timerWidthPercentage = 0;
 
   void _changePriorityToHigh() {
-    if (widget.task.endDateTime.difference(widget.task.endDateTime).inDays <=
+    if (widget.task.endDateTime.difference(widget.task.startDateTime).inDays <=
         1) {
+      switch (widget.task.priority.name) {
+        case 'medium':
+          {
+            widget.section.mediumTasks--;
+            widget.section.highTasks++;
+          }
+          break;
+        case 'low':
+          {
+            widget.section.lowTasks--;
+            widget.section.highTasks++;
+          }
+          break;
+      }
       widget.task.priority = Priority.high;
     } else if (widget.task.endDateTime
-            .difference(widget.task.endDateTime)
+            .difference(widget.task.startDateTime)
             .inDays <=0) {
       widget.completed(widget.task);
     }

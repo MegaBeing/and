@@ -7,16 +7,6 @@ const Map<Priority,Color>priorityColor = {
   Priority.medium : Colors.yellow,
   Priority.low : Colors.green,
 };
-final Map<Priority,int>completedTask = {
-  Priority.high:0,
-  Priority.low:0,
-  Priority.medium:0,
-};
-final Map<Priority,int>incompletedTask = {
-  Priority.high:0,
-  Priority.low:0,
-  Priority.medium:0,
-};
 class TaskModel {
   TaskModel({
     required this.title,

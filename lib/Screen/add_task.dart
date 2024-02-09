@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:and/Models/task.dart';
-import 'package:and/Widget/date_on_task.dart';
+import 'package:and/Widget/Task_Widgets/date_on_task.dart';
 import 'package:flutter/material.dart';
 
 class AddTask extends StatefulWidget {
@@ -13,15 +13,15 @@ class AddTask extends StatefulWidget {
 }
 
 class _AddTaskState extends State<AddTask> {
-  final _taskkey = GlobalKey<FormState>();
+  final _taskKey = GlobalKey<FormState>();
   String _enteredTaskTitle = '';
   Priority _enteredPriority = Priority.low;
   DateTime? _startDate;
   DateTime? _endDate;
 
   void _saveTask() {
-    if (_taskkey.currentState!.validate()) {
-      _taskkey.currentState!.save();
+    if (_taskKey.currentState!.validate()) {
+      _taskKey.currentState!.save();
       Navigator.of(context).pop(
         TaskModel(
           title: _enteredTaskTitle,
@@ -58,11 +58,11 @@ class _AddTaskState extends State<AddTask> {
         title: const Text('New Task'),
       ),
       body: Form(
-        key: _taskkey,
+        key: _taskKey,
         child: Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Expanded(
@@ -89,6 +89,7 @@ class _AddTaskState extends State<AddTask> {
                     ),
                   ),
                 ),
+                SizedBox(width: 40,),
                 Expanded(
                   child: DropdownButtonFormField(
                     onChanged: (value) {
@@ -146,7 +147,7 @@ class _AddTaskState extends State<AddTask> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    _taskkey.currentState!.reset();
+                    _taskKey.currentState!.reset();
                   },
                   child: const Text('Reset'),
                 ),

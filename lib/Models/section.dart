@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:and/Models/task.dart';
 import 'package:uuid/uuid.dart';
 import 'package:flutter/material.dart';
@@ -8,12 +10,13 @@ class SectionModel {
     required this.title,
     required this.taskList,
     required this.color,
-    required this.totalTasks,
   }) : id = uuid.v4();
   final String id;
   final String title;
   final Color color;
   final List<TaskModel> taskList;
-  final int totalTasks;
+  int highTasks = 0;
+  int mediumTasks = 0;
+  int lowTasks = 0;
 }
 

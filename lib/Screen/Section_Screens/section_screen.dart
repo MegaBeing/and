@@ -1,5 +1,5 @@
 import 'package:and/Data/task_data.dart';
-import 'package:and/Widget/section.dart';
+import 'package:and/Widget/Section_Widgets/section.dart';
 import 'package:flutter/material.dart';
 
 class SectionScreen extends StatelessWidget {

@@ -1,5 +1,7 @@
+import 'dart:math';
+
 import 'package:and/Models/section.dart';
-import 'package:and/Widget/Section_Expanded_Widgets/chart_bar.dart';
+import 'package:and/Widget/Section_Widgets/Section_Expanded_Widgets/chart_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:and/Models/task.dart';
 
@@ -18,6 +20,10 @@ class SectionExpandedChart extends StatefulWidget {
 }
 
 class _SectionExpandedChartState extends State<SectionExpandedChart> {
+  int get maxTasks {
+    int mx = max(max(widget.section.highTasks,widget.section.mediumTasks),widget.section.lowTasks);
+    return mx;
+  }
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -31,40 +37,36 @@ class _SectionExpandedChartState extends State<SectionExpandedChart> {
         children: [
           SizedBox(
             width: double.infinity,
-            height:660,
+            height: 660,
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                for (final priority in Priority.values)
                   ChartBar(
-                    fillCompleted: widget.section.totalTasks == 0
+                    fill: maxTasks == 0
                         ? 0
-                        : completedTask[priority]! / widget.section.totalTasks,
-                    fillIncompleted: widget.section.totalTasks == 0
+                        :  widget.section.highTasks / maxTasks,
+                  ),ChartBar(
+                    fill: maxTasks == 0
                         ? 0
-                        : incompletedTask[priority]! /
-                            widget.section.totalTasks,
-                  )
+                        :  widget.section.mediumTasks / maxTasks,
+                  ),ChartBar(
+                    fill: maxTasks == 0
+                        ? 0
+                        :  widget.section.lowTasks / maxTasks,
+                  ),
               ],
             ),
           ),
           SizedBox(
-            height:50,
+            height: 50,
             child: Row(
               children: [
                 for (final priority in Priority.values)
                   Expanded(
-                    child: Column(
-                      children: [
-                        Text(priority.name),
-                        const SizedBox(height:10),
-                        const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text('completed'),
-                            Text('uncompleted'),
-                          ],
-                        )
-                      ],
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      alignment: Alignment.center,
+                      child: Text(priority.name),
                     ),
                   ),
               ],
