@@ -1,6 +1,17 @@
 import 'package:and/Screen/Section_Screens/section_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  runApp(MaterialApp(home:SectionScreen()));
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
+  ]).then(
+    (value) => runApp(
+      const MaterialApp(
+        home: SectionScreen(),
+      ),
+    ),
+  );
 }

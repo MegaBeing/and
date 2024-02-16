@@ -7,19 +7,21 @@ class SectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    var a = MediaQuery.of(context).viewInsets.horizontal;
-    var b = MediaQuery.of(context).viewInsets.vertical;
+    var a = MediaQuery.of(context).size.width;
+    var b = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisExtent: 410,
+      body: SafeArea(
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisExtent: 410,
+          ),
+          itemBuilder: (ctx, index) => Section(
+            section: sections[index],
+            title: sections[index].title,
+          ),
+          itemCount: sections.length,
         ),
-        itemBuilder: (ctx, index) => Section(
-          section: sections[index],
-          title: sections[index].title,
-        ),
-        itemCount: sections.length,
       ),
     );
   }

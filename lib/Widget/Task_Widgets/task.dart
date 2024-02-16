@@ -111,7 +111,7 @@ class _TaskState extends State<Task> {
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(10, 2, 10, 2),
                       child: Text(
-                        widget.task.title,
+                        widget.task.title.trim(),
                         style:
                             const TextStyle(color: Colors.white, fontSize: 24),
                       ),

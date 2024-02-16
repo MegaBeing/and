@@ -25,7 +25,7 @@ class _SectionState extends State<Section> {
       MaterialPageRoute(
         builder: (ctx) => SectionExpanded(
           section: widget.section,
-          completed: _removeTask,
+          onRemove: _removeTask,
         ),
       ),
     );
