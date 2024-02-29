@@ -20,6 +20,25 @@ class _AddTaskState extends State<AddTask> {
   DateTime? _endDate;
 
   void _saveTask() {
+    if(_startDate==null || _endDate==null)
+      {
+        showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            title: const Text('No Date Range Selected'),
+            content: const Text('Please select the Date Range for the following Task'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(ctx);
+                },
+                child: const Text('Okay'),
+              ),
+            ],
+          ),
+        );
+        return;
+      }
     if (_taskKey.currentState!.validate()) {
       _taskKey.currentState!.save();
       Navigator.of(context).pop(
@@ -152,6 +171,10 @@ class _AddTaskState extends State<AddTask> {
                     ElevatedButton(
                       onPressed: () {
                         _taskKey.currentState!.reset();
+                        setState(() {
+                          _endDate = null;
+                          _startDate = null;
+                        });
                       },
                       child: const Text('Reset'),
                     ),

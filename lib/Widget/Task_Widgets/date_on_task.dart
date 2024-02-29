@@ -29,20 +29,18 @@ class DateOnTask extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.center,
+            padding: const EdgeInsets.all(4),
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.yellow,
+              color: Color(0xfff9f5f6),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(2),
               child: Text(
                 date.day.toString(),
               ),
             ),
-          ),
           Text(
             months[date.month - 1],
-            style: const TextStyle(color: Colors.yellow),
+            style: const TextStyle(color: Color(0xff312f2f)),
           ),
         ],
       ),

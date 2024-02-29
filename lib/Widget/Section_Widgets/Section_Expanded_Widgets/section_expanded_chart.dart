@@ -36,14 +36,7 @@ class _SectionExpandedChartState extends State<SectionExpandedChart> {
       width: width / 2.3,
       margin: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [
-            Color(0xff87e54c),
-            Color(0xff5fe2e2),
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
+        color: Color(0xfffaf0e6),
         borderRadius: BorderRadius.circular(14),
       ),
       child: Column(

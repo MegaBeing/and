@@ -130,8 +130,8 @@ class _SectionState extends State<Section> {
                   key: ValueKey(widget.section.taskList[0]),
                   background: Container(
                     color: Colors.red,
-                    padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                    margin: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                    margin: const EdgeInsets.symmetric(
                       horizontal: 5,
                       vertical: 10,
                     ),
@@ -150,7 +150,7 @@ class _SectionState extends State<Section> {
                   background: Container(
                     color: Colors.red,
                     padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                    margin: EdgeInsets.symmetric(
+                    margin: const EdgeInsets.symmetric(
                       horizontal: 5,
                       vertical: 10,
                     ),
@@ -169,8 +169,8 @@ class _SectionState extends State<Section> {
                   key: ValueKey(widget.section.taskList[0]),
                   background: Container(
                     color: Colors.red,
-                    padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                    margin: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                    margin: const EdgeInsets.symmetric(
                       horizontal: 5,
                       vertical: 10,
                     ),
@@ -185,9 +185,8 @@ class _SectionState extends State<Section> {
                   ),
                 )
               else
-                const Center(
-                  child: Text("Empty"),
-                )
+                Text("Empty",style: TextStyle(fontSize: 24),),
+
             ],
           ),
         ),

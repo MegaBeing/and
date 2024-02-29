@@ -3,9 +3,9 @@ import 'package:uuid/uuid.dart';
 const uuid = Uuid();
 enum Priority { high, medium, low }
 const Map<Priority,Color>priorityColor = {
-  Priority.high : Colors.red,
-  Priority.medium : Colors.yellow,
-  Priority.low : Colors.green,
+  Priority.high : Color(0xffff6868),
+  Priority.medium : Color(0xffe7bb41),
+  Priority.low : Color(0xff87a922),
 };
 class TaskModel {
   TaskModel({

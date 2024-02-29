@@ -21,17 +21,10 @@ class ChartBar extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
             borderRadius: const BorderRadius.vertical(top: Radius.circular(8)),
-            gradient: LinearGradient(
-              colors: [
-                color.withOpacity(.9),
-                color.withOpacity(0.2),
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+            color: color
             ),
           ),
         ),
-      ),
     );
   }
 }

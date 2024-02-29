@@ -20,8 +20,6 @@ class _SectionExpandedState extends State<SectionExpanded> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -38,7 +36,7 @@ class _SectionExpandedState extends State<SectionExpanded> {
           children: [
             SectionExpandedChart(
                 section: widget.section, completed: widget.onRemove),
-            widget.section.taskList.length > 1
+            widget.section.taskList.isNotEmpty
                 ? SingleChildScrollView(
                     child: Column(
                       children: [
@@ -68,7 +66,7 @@ class _SectionExpandedState extends State<SectionExpanded> {
                 : Container(
               width: 500,
                     alignment: Alignment.center,
-                    child: const Text('Empty'),
+                    child: const Text('Empty',style: TextStyle(fontSize: 29),),
                   )
           ],
         ),

@@ -3,11 +3,10 @@ import 'package:and/Calculations/time_to_timer.dart';
 import 'package:and/Models/section.dart';
 import 'package:and/Widget/Task_Widgets/date_on_task.dart';
 import 'package:flutter/material.dart';
-
 import '../../Models/task.dart';
 
 class Task extends StatefulWidget {
-  Task({super.key,required this.section, required this.task, required this.completed});
+  const Task({super.key,required this.section, required this.task, required this.completed});
   final SectionModel section;
   final TaskModel task;
   final void Function(TaskModel task) completed;
@@ -106,7 +105,7 @@ class _TaskState extends State<Task> {
                   Container(
                     margin: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                        color: Colors.pinkAccent,
+                        color: Color(0xff176b87),
                         borderRadius: BorderRadius.circular(23)),
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(10, 2, 10, 2),
