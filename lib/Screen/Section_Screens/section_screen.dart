@@ -4,12 +4,25 @@ import 'package:flutter/material.dart';
 
 class SectionScreen extends StatelessWidget {
   const SectionScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     var a = MediaQuery.of(context).size.width;
     var b = MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("And Listy",style: TextStyle(fontSize: 32,fontWeight: FontWeight.bold),),
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right:10),
+            child: OutlinedButton(
+              onPressed: () {},
+              child: const Text('Generate'),
+            ),
+          )
+        ],
+      ),
       body: SafeArea(
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -26,4 +39,3 @@ class SectionScreen extends StatelessWidget {
     );
   }
 }
-

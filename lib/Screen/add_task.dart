@@ -90,7 +90,7 @@ class _AddTaskState extends State<AddTask> {
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsets.only(left:20,right: 20),
+                        padding: const EdgeInsets.only(left:20,right: 20),
                         child: TextFormField(
                           initialValue: _enteredTaskTitle,
                           maxLength: 25,
@@ -112,7 +112,7 @@ class _AddTaskState extends State<AddTask> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 40,),
+                    const SizedBox(width: 40,),
                     Expanded(
                       child: DropdownButtonFormField(
                         onChanged: (value) {
